@@ -579,14 +579,21 @@
             });
         });
 
-        // Email form enhancement
+        // Enhanced form submission
         document.querySelector('.signup-form').addEventListener('submit', function (e) {
             const email = this.querySelector('input[type="email"]').value;
             if (email) {
-                // You can replace this with a proper form service like Netlify Forms, Formspree, etc.
-                alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
+                // Form will submit to Formspree - no need to prevent default
+                console.log('Email submitted:', email);
             }
         });
+
+        // Show success message if redirected back with success parameter
+        if (window.location.search.includes('success=true')) {
+            alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
+            // Remove success parameter from URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
     </script>
 </body>
 
