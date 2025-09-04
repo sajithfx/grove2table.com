@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grove2Table - Orange County's Hyperlocal Food Platform</title>
+    <meta name="description"
+        content="Pre-order fresh produce from Orange County farmers markets. Support local farms, guarantee availability, pick up at market booths.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2d5016;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2d5016;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .email-signup .section-title {
+            color: white;
+        }
+
+        .email-signup .section-subtitle {
+            color: white;
+            opacity: 0.9;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #ff6b35;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2d5016;
+        }
+
+        /* Value Props */
+        .value-props {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .prop {
+            padding: 30px;
+            border-left: 4px solid #4a7c23;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .prop h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2d5016;
+        }
+
+        .prop-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Markets */
+        .markets {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .market {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .market h3 {
+            color: #2d5016;
+            margin-bottom: 10px;
+        }
+
+        .market-day {
+            color: #ff6b35;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Email Signup */
+        .email-signup {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c23 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .signup-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group button {
+            padding: 15px 30px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .form-group button:hover {
+            background: #e55a2b;
+        }
+
+        .privacy-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+
+        /* Survey Links */
+        .surveys {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .survey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .survey-card {
+            padding: 30px;
+            border: 2px solid #4a7c23;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .survey-card h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+        }
+
+        .survey-card p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5016;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            header {
+                padding: 40px 0;
+            }
+
+            .how-it-works,
+            .value-props,
+            .markets,
+            .email-signup {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">🍊 Grove2Table</h1>
+            <p class="tagline">Pre-order from Orange County Farmers Markets</p>
+            <p class="subtitle">Support local farms • Guarantee fresh produce • Skip the crowds</p>
+
+            <div class="cta-buttons">
+                <a href="#email-signup" class="btn btn-primary">Join Early Access List</a>
+                <a href="#surveys" class="btn btn-secondary">Take Our Survey</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How Grove2Table Works</h2>
+            <p class="section-subtitle">Working WITH farmers markets to make fresh, local food more accessible while
+                supporting vendors and market communities.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Browse & Order</h3>
+                    <p>Browse available produce by market day. Place orders at least 48 hours before market day to
+                        guarantee availability of your favorite items.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Visit the Market</h3>
+                    <p>Go to your chosen farmers market on market day. Find your vendor's booth and enjoy the full
+                        market experience - discover new vendors, seasonal specialties, and community atmosphere.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Pick Up & Pay</h3>
+                    <p>Collect your pre-ordered items directly from the vendor's booth. Pay market prices directly to
+                        the farmer. Support both the vendor and the farmers market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Props -->
+    <section class="value-props">
+        <div class="container">
+            <h2 class="section-title">Why Grove2Table?</h2>
+
+            <div class="props-grid">
+                <div class="prop">
+                    <div class="prop-icon">🎯</div>
+                    <h3>For Customers</h3>
+                    <p>Guarantee your favorite produce is available. Discover new vendors. Plan your market visit
+                        efficiently. Support local farmers and markets.</p>
+                </div>
+
+                <div class="prop">
+                    <div class="prop-icon">🚜</div>
+                    <h3>For Farmers</h3>
+                    <p>More customers driven to your booth. Predictable demand 48 hours ahead. No extra work - just
+                        fulfill pre-orders. Respect existing market structures.</p>
+                </div>
+
+                <div class="prop">
+                    <div class="prop-icon">🏪</div>
+                    <h3>For Markets</h3>
+                    <p>Increased foot traffic and vendor sales. Digital marketing you don't have to do. Attract younger,
+                        tech-savvy customers. Higher market fee revenue.</p>
+                </div>
+
+                <div class="prop">
+                    <div class="prop-icon">🌱</div>
+                    <h3>For Community</h3>
+                    <p>Strengthen local food systems. Reduce food waste through planned production. Build connections
+                        between neighbors and farmers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Markets -->
+    <section class="markets">
+        <div class="container">
+            <h2 class="section-title">Featured Orange County Markets</h2>
+            <p class="section-subtitle">Starting with Orange County's most vibrant farmers markets</p>
+
+            <div class="market-grid">
+                <div class="market">
+                    <h3>Newport Beach Farmers Market</h3>
+                    <div class="market-day">Saturdays</div>
+                    <p>Premium vendors, oceanside location, diverse produce selection</p>
+                </div>
+
+                <div class="market">
+                    <h3>Irvine Farmers Market</h3>
+                    <div class="market-day">Saturdays</div>
+                    <p>Family-friendly, organic focus, tech-savvy community</p>
+                </div>
+
+                <div class="market">
+                    <h3>Tustin Farmers Market</h3>
+                    <div class="market-day">Saturdays</div>
+                    <p>Established vendors, strong community ties, seasonal specialties</p>
+                </div>
+
+                <div class="market">
+                    <h3>Orange International Street Fair</h3>
+                    <div class="market-day">Saturdays</div>
+                    <p>Historic downtown setting, diverse offerings, cultural atmosphere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Signup -->
+    <section class="email-signup" id="email-signup">
+        <div class="container">
+            <h2 class="section-title">Join Our Early Access List</h2>
+            <p class="section-subtitle">Be the first to know when Grove2Table launches in October 2025. Get exclusive
+                founding member benefits and early access to your favorite vendors.</p>
+
+            <form class="signup-form" action="mailto:sajithfx@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit">Join Waitlist</button>
+                </div>
+                <p class="privacy-note">We respect your privacy. No spam, just updates on our launch progress.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Surveys -->
+    <section class="surveys" id="surveys">
+        <div class="container">
+            <h2 class="section-title">Help Us Build Grove2Table</h2>
+            <p class="section-subtitle">Your input shapes how our platform works. Take the survey that best describes
+                you:</p>
+
+            <div class="survey-grid">
+                <div class="survey-card">
+                    <h3>🛒 Local Customers</h3>
+                    <p>Love fresh, local food? Help us understand what Orange County residents want from a local food
+                        platform.</p>
+                    <a href="https://shorturl.at/9BQaX" class="btn btn-primary" target="_blank">Customer Survey</a>
+                </div>
+
+                <div class="survey-card">
+                    <h3>🚜 Local Farmers</h3>
+                    <p>Small to medium farms within 60 minutes of Orange County. Share your thoughts on direct sales
+                        platforms.</p>
+                    <a href="https://shorturl.at/z1Nt7" class="btn btn-primary" target="_blank">Farmer Survey</a>
+                </div>
+
+                <div class="survey-card">
+                    <h3>🏡 Home Gardeners</h3>
+                    <p>Have excess produce from your garden or fruit trees? Learn how you could earn extra income from
+                        your harvest.</p>
+                    <a href="https://shorturl.at/0w2uD" class="btn btn-primary" target="_blank">Gardener Survey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Grove2Table</h3>
+                    <p>From California groves and local farms to your neighborhood table.</p>
+                    <p>Launching October 2025</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: hello@grove2table.com</p>
+                    <p>Orange County, California</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Mission</h3>
+                    <p>Supporting local farmers, strengthening community connections, and making fresh food accessible
+                        through farmers markets.</p>
+                </div>
+            </div>
+
+            <p>&copy; 2025 Grove2Table. Building Orange County's local food community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Email form enhancement
+        document.querySelector('.signup-form').addEventListener('submit', function (e) {
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                // You can replace this with a proper form service like Netlify Forms, Formspree, etc.
+                alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
+            }
+        });
+    </script>
+</body>
+
+</html>
