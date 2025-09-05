@@ -118,15 +118,6 @@
             margin-right: auto;
         }
 
-        .email-signup .section-title {
-            color: white;
-        }
-
-        .email-signup .section-subtitle {
-            color: white;
-            opacity: 0.9;
-        }
-
         .steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -232,6 +223,15 @@
             text-align: center;
         }
 
+        .email-signup .section-title {
+            color: white;
+        }
+
+        .email-signup .section-subtitle {
+            color: white;
+            opacity: 0.9;
+        }
+
         .signup-form {
             max-width: 500px;
             margin: 40px auto 0;
@@ -264,6 +264,11 @@
 
         .form-group button:hover {
             background: #e55a2b;
+        }
+
+        .form-group button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
         }
 
         .privacy-note {
@@ -331,6 +336,16 @@
 
         .footer-section a:hover {
             color: white;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
         }
 
         /* Mobile Responsive */
@@ -499,10 +514,19 @@
             <p class="section-subtitle">Be the first to know when Grove2Table launches in October 2025. Get exclusive
                 founding member benefits and early access to your favorite vendors.</p>
 
-            <form class="signup-form" action="mailto:sajithfx@gmail.com" method="post" enctype="text/plain">
+            <form class="signup-form" name="waitlist" method="POST" data-netlify="true"
+                data-netlify-honeypot="bot-field" action="/success" data-netlify-recaptcha="true">
+                <input type="hidden" name="form-name" value="waitlist">
+                <input type="hidden" name="email-to" value="sajithfx@gmail.com">
+                <p style="display: none;">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </p>
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Enter your email address" required>
                     <button type="submit">Join Waitlist</button>
+                </div>
+                <div class="success-message" id="success-message">
+                    Thank you for joining our waitlist! We'll be in touch soon.
                 </div>
                 <p class="privacy-note">We respect your privacy. No spam, just updates on our launch progress.</p>
             </form>
@@ -553,7 +577,7 @@
 
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Email: hello@grove2table.com</p>
+                    <p>Email: sajithfx@gmail.com</p>
                     <p>Orange County, California</p>
                 </div>
 
@@ -579,21 +603,35 @@
             });
         });
 
-        // Enhanced form submission
+        // Enhanced form submission for Netlify
         document.querySelector('.signup-form').addEventListener('submit', function (e) {
             const email = this.querySelector('input[type="email"]').value;
+            const button = this.querySelector('button[type="submit"]');
+            const successMessage = document.getElementById('success-message');
+
             if (email) {
-                // Form will submit to Formspree - no need to prevent default
-                console.log('Email submitted:', email);
+                // Show loading state
+                button.textContent = 'Joining...';
+                button.disabled = true;
+
+                // Let Netlify handle the form submission
+                // The success message will be shown via Netlify's success page or we can handle it here
+                setTimeout(() => {
+                    // Reset form
+                    this.reset();
+                    button.textContent = 'Join Waitlist';
+                    button.disabled = false;
+
+                    // Show success message
+                    successMessage.style.display = 'block';
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }, 1000);
             }
         });
-
-        // Show success message if redirected back with success parameter
-        if (window.location.search.includes('success=true')) {
-            alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
-            // Remove success parameter from URL
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
     </script>
 </body>
 
