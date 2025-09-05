@@ -398,25 +398,29 @@
     <section class="how-it-works">
         <div class="container">
             <h2 class="section-title">How Grove2Table Works</h2>
-            <p class="section-subtitle">Connecting Orange County neighbors with local farms, home gardens, and select farmers market vendors through our managed delivery network.</p>
+            <p class="section-subtitle">Connecting Orange County neighbors with local farms, home gardens, and select
+                farmers market vendors through our managed delivery network.</p>
 
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Browse & Order Online</h3>
-                    <p>Browse fresh produce from local farms, home gardens, and select farmers market vendors. Place orders at least 48 hours ahead for guaranteed availability and optimal freshness.</p>
+                    <p>Browse fresh produce from local farms, home gardens, and select farmers market vendors. Place
+                        orders at least 48 hours ahead for guaranteed availability and optimal freshness.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>We Handle Everything</h3>
-                    <p>Our staff coordinate with farmers and gardeners, collect your orders, and manage all the logistics. No extra work for growers - they just fulfill our consolidated orders.</p>
+                    <p>Our staff coordinate with farmers and gardeners, collect your orders, and manage all the
+                        logistics. No extra work for growers - they just fulfill our consolidated orders.</p>
                 </div>
 
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Fresh Delivery</h3>
-                    <p>Receive your ultra-fresh produce delivered to convenient neighborhood pickup points or direct to your door. Pay fair prices directly supporting local growers.</p>
+                    <p>Receive your ultra-fresh produce delivered to convenient neighborhood pickup points or direct to
+                        your door. Pay fair prices directly supporting local growers.</p>
                 </div>
             </div>
         </div>
@@ -431,19 +435,22 @@
                 <div class="prop">
                     <div class="prop-icon">🎯</div>
                     <h3>For Customers</h3>
-                    <p>Access ultra-fresh, hyperlocal produce delivered to your neighborhood. Discover amazing home gardens and small farms within 30 minutes of your home.</p>
+                    <p>Access ultra-fresh, hyperlocal produce delivered to your neighborhood. Discover amazing home
+                        gardens and small farms within 30 minutes of your home.</p>
                 </div>
 
                 <div class="prop">
                     <div class="prop-icon">🚜</div>
                     <h3>For Farmers & Gardeners</h3>
-                    <p>Additional sales channel with no extra work. Our staff handle all orders, logistics, and delivery. Just fulfill our consolidated orders at fair prices.</p>
+                    <p>Additional sales channel with no extra work. Our staff handle all orders, logistics, and
+                        delivery. Just fulfill our consolidated orders at fair prices.</p>
                 </div>
 
                 <div class="prop">
                     <div class="prop-icon">🏪</div>
                     <h3>For Markets & Community</h3>
-                    <p>Complement existing farmers markets without competition. Create new income streams for home gardeners and small farms not in markets.</p>
+                    <p>Complement existing farmers markets without competition. Create new income streams for home
+                        gardeners and small farms not in markets.</p>
                 </div>
 
                 <div class="prop">
@@ -466,19 +473,22 @@
                 <div class="market">
                     <h3>Local Farms</h3>
                     <div class="market-day">Within 60 Minutes</div>
-                    <p>Small to medium farms in Orange, Riverside, and Ventura counties providing fresh, seasonal produce with staff-managed ordering</p>
+                    <p>Small to medium farms in Orange, Riverside, and Ventura counties providing fresh, seasonal
+                        produce with staff-managed ordering</p>
                 </div>
 
                 <div class="market">
                     <h3>Home Gardens</h3>
                     <div class="market-day">Neighborhood-Fresh</div>
-                    <p>Backyard citrus, avocados, and vegetables from Orange County home gardeners delivered within 24 hours of harvest</p>
+                    <p>Backyard citrus, avocados, and vegetables from Orange County home gardeners delivered within 24
+                        hours of harvest</p>
                 </div>
 
                 <div class="market">
                     <h3>Select Market Vendors</h3>
                     <div class="market-day">Weekends</div>
-                    <p>Partnering with farmers market vendors who want an additional sales channel with no extra workload</p>
+                    <p>Partnering with farmers market vendors who want an additional sales channel with no extra
+                        workload</p>
                 </div>
 
                 <div class="market">
@@ -494,9 +504,10 @@
     <section class="email-signup" id="email-signup">
         <div class="container">
             <h2 class="section-title">Join Our Early Access List</h2>
-            <p class="section-subtitle">Be the first to know when Grove2Table launches in October 2025. Get exclusive founding member benefits and access to the freshest hyperlocal produce network.</p>
+            <p class="section-subtitle">Be the first to know when Grove2Table launches in October 2025. Get exclusive
+                founding member benefits and access to the freshest hyperlocal produce network.</p>
 
-            <form class="signup-form" action="https://formspree.io/sajithfx@gmail.com" method="POST">
+            <form class="signup-form" action="https://formspree.io/f/mqadggqb" method="POST">
                 <input type="hidden" name="_next" value="https://sajithfx.github.io/grove2table.com/">
                 <input type="hidden" name="_subject" value="Grove2Table Waitlist Signup">
                 <div class="form-group">
@@ -552,13 +563,14 @@
 
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Email: sajithfx@gmail.com</p>
+                    <p>Email: grove2table@gmail.com</p>
                     <p>Orange County, California</p>
                 </div>
 
                 <div class="footer-section">
                     <h3>Mission</h3>
-                    <p>Connecting Orange County neighbors with hyperlocal farms and gardens through our managed delivery network. Making ultra-fresh food accessible while supporting local growers.</p>
+                    <p>Connecting Orange County neighbors with hyperlocal farms and gardens through our managed delivery
+                        network. Making ultra-fresh food accessible while supporting local growers.</p>
                 </div>
             </div>
 
@@ -578,22 +590,22 @@
         });
 
         // Enhanced form submission with multiple options
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+        document.getElementById('waitlist-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const emailInput = document.getElementById('email-input');
             const submitButton = this.querySelector('button[type="submit"]');
             const messageDiv = document.getElementById('form-message');
             const email = emailInput.value;
-            
+
             // Disable button and show loading state
             submitButton.textContent = 'Joining...';
             submitButton.disabled = true;
             messageDiv.style.display = 'none';
-            
+
             // Option 1: Store in localStorage for now (temporary solution)
             let waitlistEmails = JSON.parse(localStorage.getItem('grove2table_waitlist') || '[]');
-            
+
             if (!waitlistEmails.includes(email)) {
                 waitlistEmails.push({
                     email: email,
@@ -602,11 +614,11 @@
                 });
                 localStorage.setItem('grove2table_waitlist', JSON.stringify(waitlistEmails));
             }
-            
+
             // Option 2: Try mailto as backup
             const subject = encodeURIComponent('Grove2Table Waitlist Signup');
             const body = encodeURIComponent(`New waitlist signup:\n\nEmail: ${email}\nTimestamp: ${new Date().toISOString()}\nSource: Website\n\nPlease add to Grove2Table mailing list.`);
-            
+
             // Show success message
             messageDiv.innerHTML = `
                 <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb;">
@@ -615,33 +627,33 @@
                 </div>
             `;
             messageDiv.style.display = 'block';
-            
+
             // Optional: Open email client for manual processing
             setTimeout(() => {
                 const mailtoLink = `mailto:sajithfx@gmail.com?subject=${subject}&body=${body}`;
                 // Uncomment next line if you want to auto-open email client:
                 // window.open(mailtoLink);
             }, 1000);
-            
+
             // Reset form
             emailInput.value = '';
             submitButton.textContent = 'Join Waitlist';
             submitButton.disabled = false;
-            
+
             // Log for debugging (check browser console)
             console.log('Waitlist signup:', { email, timestamp: new Date().toISOString() });
         });
 
         // Function to export waitlist data (call from browser console)
-        window.exportWaitlist = function() {
+        window.exportWaitlist = function () {
             const waitlist = JSON.parse(localStorage.getItem('grove2table_waitlist') || '[]');
             console.table(waitlist);
-            
+
             // Create downloadable CSV
-            const csvContent = "data:text/csv;charset=utf-8," 
+            const csvContent = "data:text/csv;charset=utf-8,"
                 + "Email,Timestamp,Source\n"
                 + waitlist.map(item => `${item.email},${item.timestamp},${item.source}`).join('\n');
-            
+
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
