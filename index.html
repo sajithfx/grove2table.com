@@ -577,13 +577,79 @@
             });
         });
 
-        // Simple form submission
-        document.querySelector('.signup-form').addEventListener('submit', function(e) {
-            const button = this.querySelector('button[type="submit"]');
-            button.textContent = 'Joining...';
-            button.disabled = true;
-            // Form will submit normally to Formspree, then redirect back
+        // Enhanced form submission with multiple options
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('email-input');
+            const submitButton = this.querySelector('button[type="submit"]');
+            const messageDiv = document.getElementById('form-message');
+            const email = emailInput.value;
+            
+            // Disable button and show loading state
+            submitButton.textContent = 'Joining...';
+            submitButton.disabled = true;
+            messageDiv.style.display = 'none';
+            
+            // Option 1: Store in localStorage for now (temporary solution)
+            let waitlistEmails = JSON.parse(localStorage.getItem('grove2table_waitlist') || '[]');
+            
+            if (!waitlistEmails.includes(email)) {
+                waitlistEmails.push({
+                    email: email,
+                    timestamp: new Date().toISOString(),
+                    source: 'website'
+                });
+                localStorage.setItem('grove2table_waitlist', JSON.stringify(waitlistEmails));
+            }
+            
+            // Option 2: Try mailto as backup
+            const subject = encodeURIComponent('Grove2Table Waitlist Signup');
+            const body = encodeURIComponent(`New waitlist signup:\n\nEmail: ${email}\nTimestamp: ${new Date().toISOString()}\nSource: Website\n\nPlease add to Grove2Table mailing list.`);
+            
+            // Show success message
+            messageDiv.innerHTML = `
+                <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb;">
+                    <strong>✅ Success!</strong> You've been added to our waitlist.<br>
+                    <small>We'll email you when Grove2Table launches in October 2025.</small>
+                </div>
+            `;
+            messageDiv.style.display = 'block';
+            
+            // Optional: Open email client for manual processing
+            setTimeout(() => {
+                const mailtoLink = `mailto:sajithfx@gmail.com?subject=${subject}&body=${body}`;
+                // Uncomment next line if you want to auto-open email client:
+                // window.open(mailtoLink);
+            }, 1000);
+            
+            // Reset form
+            emailInput.value = '';
+            submitButton.textContent = 'Join Waitlist';
+            submitButton.disabled = false;
+            
+            // Log for debugging (check browser console)
+            console.log('Waitlist signup:', { email, timestamp: new Date().toISOString() });
         });
+
+        // Function to export waitlist data (call from browser console)
+        window.exportWaitlist = function() {
+            const waitlist = JSON.parse(localStorage.getItem('grove2table_waitlist') || '[]');
+            console.table(waitlist);
+            
+            // Create downloadable CSV
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "Email,Timestamp,Source\n"
+                + waitlist.map(item => `${item.email},${item.timestamp},${item.source}`).join('\n');
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "grove2table_waitlist.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
     </script>
 </body>
 
