@@ -513,8 +513,9 @@
             <p class="section-subtitle">Be the first to know when Grove2Table launches in October 2025. Get exclusive
                 founding member benefits and early access to your favorite vendors.</p>
 
-            <form class="signup-form" action="https://formspree.io/f/mblrrqdo" method="POST">
+            <form class="signup-form" action="https://formspree.io/sajithfx@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Grove2Table Waitlist Signup">
+                <input type="hidden" name="_replyto" value="">
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Enter your email address" required>
                     <button type="submit">Join Waitlist</button>
@@ -598,19 +599,19 @@
         });
 
         // Ajax form submission (no page redirect)
-        document.querySelector('.signup-form').addEventListener('submit', function (e) {
+        document.querySelector('.signup-form').addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent form redirect
-
+            
             const form = this;
             const email = form.querySelector('input[type="email"]').value;
             const button = form.querySelector('button[type="submit"]');
             const successMessage = document.getElementById('success-message');
-
+            
             if (email) {
                 // Show loading state
                 button.textContent = 'Joining...';
                 button.disabled = true;
-
+                
                 // Submit via Ajax
                 fetch(form.action, {
                     method: 'POST',
@@ -625,7 +626,7 @@
                         button.textContent = 'Join Waitlist';
                         button.disabled = false;
                         successMessage.style.display = 'block';
-
+                        
                         // Hide success message after 5 seconds
                         setTimeout(() => {
                             successMessage.style.display = 'none';
