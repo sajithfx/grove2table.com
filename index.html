@@ -338,16 +338,6 @@
             color: white;
         }
 
-        /* Success Message */
-        .success-message {
-            background: #4CAF50;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            display: none;
-        }
-
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .logo {
@@ -499,6 +489,7 @@
                 </div>
 
                 <div class="market">
+                    <h3>Orange International Street Fair</h3>
                     <div class="market-day">Saturdays</div>
                     <p>Historic downtown setting, diverse offerings, cultural atmosphere</p>
                 </div>
@@ -514,14 +505,11 @@
                 founding member benefits and early access to your favorite vendors.</p>
 
             <form class="signup-form" action="https://formspree.io/sajithfx@gmail.com" method="POST">
+                <input type="hidden" name="_next" value="https://sajithfx.github.io/grove2table.com/">
                 <input type="hidden" name="_subject" value="Grove2Table Waitlist Signup">
-                <input type="hidden" name="_replyto" value="">
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Enter your email address" required>
                     <button type="submit">Join Waitlist</button>
-                </div>
-                <div class="success-message" id="success-message">
-                    Thank you for joining our waitlist! We'll be in touch soon.
                 </div>
                 <p class="privacy-note">We respect your privacy. No spam, just updates on our launch progress.</p>
             </form>
@@ -598,49 +586,12 @@
             });
         });
 
-        // Ajax form submission (no page redirect)
+        // Simple form submission
         document.querySelector('.signup-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent form redirect
-            
-            const form = this;
-            const email = form.querySelector('input[type="email"]').value;
-            const button = form.querySelector('button[type="submit"]');
-            const successMessage = document.getElementById('success-message');
-            
-            if (email) {
-                // Show loading state
-                button.textContent = 'Joining...';
-                button.disabled = true;
-                
-                // Submit via Ajax
-                fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        // Success
-                        form.reset();
-                        button.textContent = 'Join Waitlist';
-                        button.disabled = false;
-                        successMessage.style.display = 'block';
-                        
-                        // Hide success message after 5 seconds
-                        setTimeout(() => {
-                            successMessage.style.display = 'none';
-                        }, 5000);
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                }).catch(error => {
-                    // Error handling
-                    button.textContent = 'Try Again';
-                    button.disabled = false;
-                    alert('There was an error submitting the form. Please try again.');
-                });
-            }
+            const button = this.querySelector('button[type="submit"]');
+            button.textContent = 'Joining...';
+            button.disabled = true;
+            // Form will submit normally to Formspree, then redirect back
         });
     </script>
 </body>
